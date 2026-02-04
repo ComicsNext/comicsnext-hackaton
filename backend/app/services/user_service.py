@@ -8,9 +8,9 @@ def add_favorite(
     db: Session,
     user_id: int,
     comic_id: int,
-) -> models.Favorite:
+):
     """
-    Añade un cómic a favoritos de un usuario.
+    Marca un cómic como favorito para un usuario.
     """
 
     favorite = models.Favorite(
@@ -24,12 +24,13 @@ def add_favorite(
 
     return favorite
 
+
 def get_favorites_by_user(
     db: Session,
     user_id: int,
-) -> List[models.Favorite]:
+):
     """
-    Devuelve los favoritos de un usuario.
+    Devuelve los cómics favoritos de un usuario.
     """
 
     return (

@@ -14,29 +14,34 @@ def get_comics(
     limit: int,
 ) -> List[models.Comic]:
     """
-    Obtiene lista de cómics con filtros y paginación.
+    Obtiene cómics con filtros basados en la tabla comics.
     """
 
     query = db.query(models.Comic)
 
     if genre:
-        query = query.filter(models.Comic.genre == genre)
+        query = query.filter(models.Comic.Demographic == genre)
 
     if author:
-        query = query.filter(models.Comic.author == author)
+        query = query.filter(models.Comic.Author == author)
 
     if publisher:
-        query = query.filter(models.Comic.publisher == publisher)
+        query = query.filter(models.Comic.Publisher == publisher)
 
     if year:
-        query = query.filter(models.Comic.year == year)
+        query = query.filter(models.Comic.Year_of_release == year)
 
     return query.offset(skip).limit(limit).all()
 
-def get_comic_by_id(db: Session, comic_id: int) -> models.Comic | None:
+
+def get_comic_by_id(
+    db: Session,
+    comic_id: int,
+):
     """
-    Devuelve un cómic por ID.
+    Devuelve un cómic por su ID.
     """
+
     return (
         db.query(models.Comic)
         .filter(models.Comic.id == comic_id)

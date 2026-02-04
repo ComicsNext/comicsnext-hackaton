@@ -4,10 +4,12 @@ from typing import List
 from app.db import models
 from app.db.schemas import ReviewCreate
 
-
-def create_review(db: Session, review: ReviewCreate) -> models.Review:
+def create_review(
+    db: Session,
+    review: ReviewCreate,
+):
     """
-    Crea una review asociada a un cómic.
+    Crea una reseña asociada a un cómic y un usuario.
     """
 
     db_review = models.Review(
@@ -29,7 +31,7 @@ def get_reviews_by_comic(
     comic_id: int,
 ) -> List[models.Review]:
     """
-    Devuelve todas las reviews de un cómic.
+    Devuelve todas las reseñas de un cómic concreto.
     """
 
     return (
