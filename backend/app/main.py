@@ -3,7 +3,7 @@ from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from app.db.database import Base, engine,get_db
-from app.db import models
+from app.db import models 
 import sys
 import os
  
