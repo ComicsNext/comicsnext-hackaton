@@ -1,48 +1,79 @@
-from pydantic import BaseModel, Field, EmailStr
-from datetime import date
+from pydantic import BaseModel, EmailStr, Field
+from datetime import date, datetime
 from typing import Optional
 
-class UserBase(BaseModel):
+class UserOut(BaseModel):
+    user_id: int
+    user_nombre: str
+    user_mail: str
+    user_genero: str
+    user_role: str = Field(alias="role_nombre") # worker | client
+    user_fecha_naci: Optional[date] = None  # ✅ Acepta NULL
+
+    model_config = {"from_attributes": True}
+
+
+class UserCreate(BaseModel):
     user_nombre: str
     user_mail: EmailStr
-    user_genero: Optional[str]
-    user_fecha_naci: Optional[date]
+    password: str
+    user_genero: str
+    user_role: str = Field(alias="role_nombre") # worker | client
+    user_fecha_naci: Optional[date] = "2026-02-05"
 
-class UserOut(UserBase):
-    user_id: int
 
-    class Config:
-        orm_mode = True
 
-class ComicOut(BaseModel):
-    id: int
-    Name: str
-    Author: Optional[str]
-    Publisher: Optional[str]
-    Demographic: Optional[str]
-    Year_of_release: Optional[int]
+class UserDelete(BaseModel):
+    user_id: str
 
-    class Config:
-        orm_mode = True
+class MangaOut(BaseModel):
+    manga_id: int
+    Manga_series: str
+    Author_s: str
+    Publisher: str
+    Demographic: str
+    No_of_collected_volumes: int
+    Serialized: str
+    Approximate_sales_in_million_s: float
+    Average_sales_per_volume_in_million_s: float
 
-class ReviewCreate(BaseModel):
-    comic_id: int
-    user_id: int
-    rating: int = Field(ge=1, le=5)
-    comment: Optional[str]
+    model_config = {"from_attributes": True}
 
-class ReviewOut(ReviewCreate):
-    review_id: int
+class MarvelOut(BaseModel):
+    marvel_id: int
+    comic_name: str
+    active_years: str
+    issue_title: str
+    publish_date: Optional[date]
+    issue_description: str
+    penciler: str
+    writer: str
+    cover_artist: str
+    Imprint: str
+    Format: str
+    Rating: str
+    Price: str
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
 
-class FavoriteCreate(BaseModel):
-    user_id: int
-    comic_id: int
 
-class FavoriteOut(FavoriteCreate):
-    id: int
+class ResenyaCreate(BaseModel):
+    item_id: int
+    nombre_tabla: str = Field(example="manga")
+    valoracion: Optional[int] = Field(None, ge=1, le=5)
+    texto_resenya: Optional[str]
 
-    class Config:
-        orm_mode = True
+
+class ResenyaOut(ResenyaCreate):
+    user_id : int
+    resenya_id: int
+    valoracion : int
+    model_config = {"from_attributes": True}
+
+class LoginRequest(BaseModel):
+    identifier: str
+    password: str
+
+class TokenOut(BaseModel):
+    access_token: str
+    token_type: str = "bearer"

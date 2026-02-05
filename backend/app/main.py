@@ -1,6 +1,16 @@
-from fastapi import FastAPI
-
 from app.routers import comics, reviews, users
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
+from sqlalchemy import text
+from app.db.database import Base, engine,get_db
+from app.db import models
+import sys
+import os
+ 
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(ROOT_DIR)
+ 
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="ComicsNext API",
@@ -8,6 +18,11 @@ app = FastAPI(
     version="1.0.0",
 )
 
+@app.get("/test-db")
+def test_db(db: Session = Depends(get_db)):
+    result = db.execute(text("SELECT 4 ")).fetchone()
+    return {"ok": True, "result": result[0]}
+ 
 app.include_router(comics.router)
 app.include_router(reviews.router)
 app.include_router(users.router)
