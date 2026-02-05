@@ -13,13 +13,12 @@ def get_full_catalog(db: Session):
     Devuelve todo el catálogo: manga + marvel.
     """
 
-    manga = db.query(models.Manga).limit(10).all()
-    marvel = db.query(models.Marvel).limit(10).all()
+    manga = db.query(models.Manga).limit(500).all()
+    marvel = db.query(models.Marvel).limit(500).all()
 
-    return {
-        "manga": manga,
-        "marvel": marvel,
-    }
+    comics = manga + marvel
+
+    return comics
 
 
 

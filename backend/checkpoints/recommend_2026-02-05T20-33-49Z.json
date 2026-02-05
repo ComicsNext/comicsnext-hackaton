@@ -1,0 +1,43 @@
+{
+  "endpoint": "/ai/recommend",
+  "latency_ms": 558,
+  "input": {
+    "user_profile": "Me gustan las historias de Terror",
+    "top_k": 5,
+    "history": [
+      {
+        "additionalProp1": {}
+      }
+    ]
+  },
+  "output": {
+    "top_k": 5,
+    "recommendations": [
+      {
+        "manga_id": 1,
+        "score": 0.35,
+        "reason": "Recomendado porque encaja con terror; demografía Shōnen; editorial Shueisha"
+      },
+      {
+        "manga_id": 2,
+        "score": 0.35,
+        "reason": "Recomendado porque encaja con terror; demografía Seinen; editorial Shogakukan"
+      },
+      {
+        "manga_id": 3,
+        "score": 0.35,
+        "reason": "Recomendado porque encaja con terror; demografía Shōnen; editorial Shogakukan"
+      },
+      {
+        "manga_id": 4,
+        "score": 0.35,
+        "reason": "Recomendado porque encaja con terror; demografía Shōnen; editorial Shueisha"
+      },
+      {
+        "manga_id": 5,
+        "score": 0.35,
+        "reason": "Recomendado porque encaja con terror; demografía Children; editorial Shogakukan"
+      }
+    ]
+  }
+}

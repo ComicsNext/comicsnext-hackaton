@@ -1,4 +1,4 @@
-from app.routers import comics, reviews, users
+from app.routers import comics, reviews, users, ai
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import text
@@ -22,7 +22,8 @@ app = FastAPI(
 def test_db(db: Session = Depends(get_db)):
     result = db.execute(text("SELECT 4 ")).fetchone()
     return {"ok": True, "result": result[0]}
- 
+
+app.include_router(ai.router)
 app.include_router(comics.router)
 app.include_router(reviews.router)
 app.include_router(users.router)

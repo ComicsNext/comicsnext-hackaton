@@ -4,7 +4,7 @@ from datetime import datetime, UTC
 from typing import List
 from app.db import models
 from app.db.schemas import ResenyaCreate
-from sqlalchemy import exists
+
 
 def create_resenya(
     db: Session,
@@ -58,7 +58,6 @@ def get_all_resenyas(db: Session,) -> List[models.Resenya]:
     return (
         db.query(models.Resenya).all()
     )
-
 
 
 def delete_resenya_id(
