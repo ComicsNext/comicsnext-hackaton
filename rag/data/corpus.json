@@ -1,0 +1,52 @@
+[
+  {
+    "comic_id": 1,
+    "title": "Watchmen",
+    "genres": [
+      "superhero"
+    ],
+    "text": "Watchmen is a comic book limited series by the British creative team of writer Alan Moore, artist Dave Gibbons, and colorist John Higgins. It was published monthly by DC Comics in 1986 and 1987 before being collected in a single-volume edition in 1987. Watchmen originated from a story proposal Moore submitted to DC featuring superhero characters that the company had acquired from Charlton Comics. As Moore's proposed story would have left many of the characters unusable for future stories, managing editor Dick Giordano convinced Moore to create original characters instead.",
+    "source": "https://en.wikipedia.org/wiki/Watchmen"
+  },
+  {
+    "comic_id": 2,
+    "title": "Maus",
+    "genres": [
+      "historical"
+    ],
+    "text": "Maus, often published as Maus: A Survivor's Tale, is a graphic novel by American cartoonist Art Spiegelman, serialized from 1980 to 1991. It depicts Spiegelman interviewing his father about his experiences as a Polish Jew and Holocaust survivor. The work employs postmodern techniques, and represents Jews as mice, Germans as cats and Poles as pigs. Critics have classified Maus as memoir, biography, history, fiction, autobiography, or a mix of genres. In 1992, it became the first graphic novel to win a Pulitzer Prize.",
+    "source": "https://en.wikipedia.org/wiki/Maus"
+  },
+  {
+    "comic_id": 3,
+    "title": "The Sandman (comic book)",
+    "genres": [
+      "fantasy",
+      "superhero"
+    ],
+    "text": "The Sandman is a dark fantasy comic book series written by Neil Gaiman and published by DC Comics. Its artists include Sam Kieth, Mike Dringenberg, Jill Thompson, Shawn McManus, Marc Hempel, Bryan Talbot, and Michael Zulli, with lettering by Todd Klein and covers by Dave McKean. The original series ran for 75 issues from January 1989 to March 1996. Beginning with issue No. 47, it was placed under DC's Vertigo imprint, and following Vertigo's retirement in 2020, reprints have been published under DC's Black Label imprint.",
+    "source": "https://en.wikipedia.org/wiki/The_Sandman_(comic_book)"
+  },
+  {
+    "comic_id": 4,
+    "title": "Batman: Year One",
+    "genres": [
+      "historical",
+      "noir",
+      "superhero"
+    ],
+    "text": "Batman: Year One is an American comic book story arc written by Frank Miller and illustrated by David Mazzucchelli. Year One was originally published by DC Comics in Batman #404-407 monthly issues format in 1987. The story recounts Batman's first year as a crime-fighter as well as exploring the life of recently transferred Gotham police detective Jim Gordon, building towards their first encounter and their eventual alliance against Gotham's criminal underworld.",
+    "source": "https://en.wikipedia.org/wiki/Batman%3A_Year_One"
+  },
+  {
+    "comic_id": 5,
+    "title": "Saga (comics)",
+    "genres": [
+      "fantasy",
+      "historical",
+      "sci-fi"
+    ],
+    "text": "Saga is an epic space opera/fantasy comic book series written by Brian K. Vaughan and illustrated by Fiona Staples, published monthly by the American company Image Comics. The series is based on ideas Vaughan conceived both as a child and as a parent. It depicts a husband and wife, Alana and Marko, from long-warring extraterrestrial races, fleeing authorities from both sides of a galactic war as they struggle to care for their daughter, Hazel, who is born in the beginning of the series, and who occasionally narrates the series as an unseen adult.",
+    "source": "https://en.wikipedia.org/wiki/Saga_(comics)"
+  }
+]
