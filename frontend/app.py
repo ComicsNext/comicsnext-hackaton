@@ -20,7 +20,6 @@ st.set_page_config(page_title="COMICSNEXT", layout="wide")
 set_background("assets/comicsfondo.png")
 load_css("assets/styles.css")
 
-
 # ----------------------------
 # 2) Header
 # ----------------------------
@@ -42,7 +41,7 @@ st.markdown(
 # ----------------------------
 # 3) Layout centrado con card
 # ----------------------------
-left, center, right = st.columns([1, 1.25, 1])
+left, center, right = st.columns([1, 10, 1])
 
 with center:
 
