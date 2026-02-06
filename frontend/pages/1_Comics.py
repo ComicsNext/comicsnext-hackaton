@@ -6,12 +6,16 @@ from services.comics import (
     filter_marvel,
     filter_manga,
     get_marvel_by_id,
-    get_manga_by_id
+    get_manga_by_id,
+    manga_card,
+    marvel_card
 )
 
 
 from ui.background import set_background
 set_background("assets/comicsfondo.png")
+
+st.set_page_config(layout="wide")
 
 # Proteger acceso
 if "token" not in st.session_state:
@@ -30,71 +34,57 @@ modo = st.selectbox(
 # TODOS
 # -------------------------
 if modo == "Todos":
-    
     comics = list_all_comics()
 
     # separar
-    mangas = [c for c in comics if "manga_id" in c]
+    mangas = [d for d in comics if "manga_id" in d]
     marvels = [c for c in comics if "marvel_id" in c]
 
-    # ---------------- MANGA ----------------
-    st.header("🍜 Manga")
+    # columnas principales (lado a lado)
+    col_manga, col_marvel = st.columns(2)
 
-    cols = st.columns(2)
+    # ---------------- MANGA (izquierda) ----------------
+    with col_manga:
 
-    for i, m in enumerate(mangas):
-        with cols[i % 2]:
-            st.markdown(f"""
-            ### 📖 {m['Manga_series']}
-            **Autor:** {m['Author_s']}  
-            **Demographic:** {m['Demographic']}  
-            **Publisher:** {m['Publisher']}  
-            **Volúmenes:** {m['No_of_collected_volumes']}  
-            **Ventas:** {m['Approximate_sales_in_million_s']}M  
-            **Serializado:** {m['Serialized']}
-            """)
+        st.header("🍜 Manga")
+
+        for i, m in enumerate(mangas):
+            manga_card(m)
             st.divider()
 
-     # ---------------- MARVEL ----------------
+    # ---------------- MARVEL (derecha) ----------------
+    with col_marvel:
         st.header("🦸 Marvel")
 
-        cols = st.columns(2)
-
-        for i, m in enumerate(marvels):
-            
-            with cols[i % 2]:
-                st.divider()
-                st.markdown(f"""
-                ### 🦸 {m['issue_title']}
-                **Serie:** {m['comic_name']}  
-                **Writer:** {m['writer']}  
-                **Penciler:** {m['penciler']}  
-                **Rating:** {m['Rating']}  
-                **Fecha:** {m['publish_date']}  
-                **Formato:** {m['Format']}  
-                **Precio:** {m['Price']}
-                {m['issue_description']}
-                """)
-        
+        for m in marvels:
+            marvel_card(m)
+            st.divider()
 
 # -------------------------
 # MARVEL
 # -------------------------
 elif modo == "Marvel":
     comics = list_marvel()
-    for c in comics:
-        st.subheader(c["title"])
-        st.write(c)
+
+    cols = st.columns(2)
+
+    for i , m in enumerate(comics):
+        with cols[i % 2]:
+            marvel_card(m)
+            st.divider()
 
 # -------------------------
 # MANGA
 # -------------------------
 elif modo == "Manga":
     comics = list_manga()
-    for c in comics:
-        st.subheader(c["title"])
-        st.write(c)
 
+    cols = st.columns(2)
+
+    for i, m in enumerate(comics):
+        with cols[i % 2]:
+            manga_card(m)
+            st.divider()
 # -------------------------
 # FILTRO MARVEL
 # -------------------------
@@ -109,8 +99,7 @@ elif modo == "Filtrar Marvel":
     if st.button("Buscar Marvel"):
         comics = filter_marvel(writer, penciler, rating, imprint, page, size)
         for c in comics:
-            st.subheader(c["title"])
-            st.write(c)
+            marvel_card(c)
 
 # -------------------------
 # FILTRO MANGA
@@ -126,8 +115,7 @@ elif modo == "Filtrar Manga":
     if st.button("Buscar Manga"):
         comics = filter_manga(author, publisher, demographic, serialized, page, size)
         for c in comics:
-            st.subheader(c["title"])
-            st.write(c)
+            manga_card(c)
 
 # -------------------------
 # BUSCAR POR ID
@@ -139,8 +127,10 @@ elif modo == "Buscar por ID":
     if st.button("Buscar"):
         if tipo == "Marvel":
             comic = get_marvel_by_id(comic_id)
+            st.subheader(comic["issue_title"])
+            marvel_card(comic)
         else:
             comic = get_manga_by_id(comic_id)
-
-        st.subheader(comic["title"])
-        st.write(comic)
+            st.subheader(comic["Manga_series"])
+            manga_card(comic)
+       

@@ -25,9 +25,9 @@ def get_full_catalog(db: Session):
 
 def get_marvel(db: Session):
     """
-    Devuelve todo el catálogo: manga + marvel.
+    Devuelve todo el catálogo: marvel.
     """
-    return db.query(models.Marvel).filter(100).all()
+    return db.query(models.Marvel).limit(100).all()
 
     
 
