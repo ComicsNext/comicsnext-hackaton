@@ -39,7 +39,7 @@ if modo == "Ver reseñas de un cómic":
                 card = st.container(border=2)
                 card.subheader(f"⭐ {r['valoracion']}")
                 card.write(r["texto_resenya"])
-                card.caption(f"ID reseña: {r['id']}")
+                card.caption(f"ID reseña: {r['resenya_id']}")
 
 # -------------------------
 # AÑADIR RESEÑA

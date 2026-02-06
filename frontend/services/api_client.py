@@ -1,27 +1,23 @@
 import requests
 import streamlit as st
 
-API_URL = "http://localhost:8000"
+BASE_URL = "http://localhost:8000"
+def _headers():
+    headers = {"Content-Type": "application/json"}
+    token = st.session_state.get("token")
+    if token:
+        headers["x-token"] = token
+        headers["Authorization"] = f"Bearer {token}"
+    return headers
 
-def _auth_headers():
-    if "token" in st.session_state:
-        return {"Authorization": f"Bearer {st.session_state['token']}"}
-    return {}
-
-def get(path, params=None):
-    r = requests.get(
-        f"{API_URL}{path}",
-        params=params,
-        headers=_auth_headers()
-    )
-    r.raise_for_status()
+def post(path, data=None, params=None):
+    r = requests.post(BASE_URL + path, params=params, json=data, headers=_headers())
+    if not r.ok:
+        raise RuntimeError(f"POST {path} -> {r.status_code}\n{r.text}")
     return r.json()
 
-def post(path, data=None):
-    r = requests.post(
-        f"{API_URL}{path}",
-        json=data,
-        headers=_auth_headers()
-    )
-    r.raise_for_status()
+def get(path, params=None):
+    r = requests.get(BASE_URL + path, params=params, headers=_headers())
+    if not r.ok:
+        raise RuntimeError(f"GET {path} -> {r.status_code}\n{r.text}")
     return r.json()

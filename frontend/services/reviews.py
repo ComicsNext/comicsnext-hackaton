@@ -1,13 +1,13 @@
 from .api_client import get, post
 
 def add_resenya(item_id, nombre_tabla, texto_resenya, valoracion):
-    data = {
+    params = {
         "item_id": item_id,
         "nombre_tabla": nombre_tabla,
         "texto_resenya": texto_resenya,
         "valoracion": valoracion
     }
-    return post("/resenyas", data=data)
+    return post("/resenyas", params=params)
 
 def list_resenyas(item_id, nombre_tabla):
     params = {
