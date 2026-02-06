@@ -75,6 +75,9 @@ def manga_card(m):
         <p><b>Serializado:</b> {m['Serialized']}</p>
     </div>
     """, unsafe_allow_html=True)
+
+
+    
 def marvel_card(m):
     st.markdown(f"""
     <div class="card" style="

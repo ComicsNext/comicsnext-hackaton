@@ -1,5 +1,5 @@
 import streamlit as st
-from services.ia import get_recommendations
+from services.ia import get_recommendations , ia_card
 from ui.background import set_background
 
 def load_css(path: str):
@@ -32,15 +32,14 @@ st.markdown('<div class="cn-card cn-ai-card">', unsafe_allow_html=True)
 
 user_profile = st.text_area(
     "🧠 ¿Qué tipo de mangas te gustan?",
-    placeholder="Ej: Me gustan mangas oscuros tipo Berserk, acción, demonios, sin comedia...",
+    placeholder="Ej: Me gustan mangas oscuros tipo Berserk, acción, demonios, sin comedia...\n" \
+    "-- Tip: menciona 2–3 referencias (“tipo X”), lo que NO quieres y el tono. --",
     height=140,
 )
 
-c1, c2 = st.columns([1, 1])
-with c1:
-    top_k = st.slider("🎯 Cantidad de recomendaciones", 1, 10, 5)
-with c2:
-    st.markdown('<div class="cn-hint">Tip: menciona 2–3 referencias (“tipo X”), lo que NO quieres y el tono.</div>', unsafe_allow_html=True)
+
+top_k = st.slider("🎯 Cantidad de recomendaciones", 1, 10, 5)
+
 
 btn = st.button("✨ Obtener recomendaciones", use_container_width=True)
 
@@ -63,17 +62,21 @@ if btn:
         st.info("No he encontrado recomendaciones con ese perfil. Prueba a ser más específico/a.")
     else:
         for r in recs:
-            title = r.get("title", "Sin título")
-            reason = r.get("reason", "")
+            ia_card(r)
 
-            st.markdown(
-                f"""
-                <div class="cn-rec">
-                  <div class="cn-rec-title">{title}</div>
-                  <div class="cn-rec-reason">{reason}</div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+            # title = r.get("title", "Sin título")
+            # reason = r.get("reason", "")
+
+            # st.markdown(
+            #     f"""
+            #         <div class="cn-card">
+            #         <div class="cn-card-body">
+            #             <div class="cn-card-title">{title}</div>
+            #             <div class="cn-card-reason">{reason}</div>
+            #         </div>
+            #         </div>
+            #         """,
+            #     unsafe_allow_html=True
+            # )
 
     st.markdown("</div>", unsafe_allow_html=True)
