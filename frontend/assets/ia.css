@@ -1,0 +1,151 @@
+/* =========================
+   IA page (scoped styles)
+   No pisa estilos globales
+========================= */
+
+.ia-hero {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  padding: 26px 22px 18px 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.ia-kicker {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.ia-title {
+  font-size: 54px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.ia-subtitle {
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.9;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Card principal */
+.ia-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 18px 18px 12px 18px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.30);
+}
+
+.ia-tip {
+  margin-top: 28px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-size: 14px;
+  line-height: 1.35;
+  opacity: 0.95;
+}
+
+/* Resultados */
+.ia-results {
+  margin-top: 18px;
+}
+
+.ia-rec {
+  background: rgba(0,0,0,0.38);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 14px 14px 12px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.35);
+}
+
+.ia-rec-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.ia-rank {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.ia-rec-title {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.ia-rec-reason {
+  font-size: 15px;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+
+/* Ajustes suaves a inputs SOLO dentro de la página IA */
+.ia-card textarea {
+  border-radius: 14px !important;
+}
+
+/* =========================
+   IA – Header override
+   Solo para página IA
+========================= */
+
+.cn-header {
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 26px;
+  padding: 34px 28px 26px 28px;
+  margin-bottom: 26px;
+  box-shadow: 0 22px 65px rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Texto pequeño superior */
+.cn-kicker {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* TÍTULO PRINCIPAL */
+.cn-title {
+  font-size: 68px;          /* 🔥 más grande */
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+/* Subtítulo */
+.cn-subtitle {
+  font-size: 18px;
+  text-align: center;
+  opacity: 0.92;
+  max-width: 920px;
+  margin: 0 auto;
+  line-height: 1.45;
+}

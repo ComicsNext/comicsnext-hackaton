@@ -20,7 +20,7 @@ st.title("📝 Reseñas")
 
 modo = st.selectbox(
     "Selecciona acción",
-    ["Ver reseñas de un cómic", "Añadir reseña", "Ver todas las reseñas", "Borrar reseña"]
+    ["Ver reseñas de un cómic", "Ver todas las reseñas",  "Añadir reseña", "Borrar reseña"]
 )
 
 # -------------------------
@@ -42,6 +42,16 @@ if modo == "Ver reseñas de un cómic":
                 card.caption(f"ID reseña: {r['resenya_id']}")
 
 # -------------------------
+# VER TODAS LAS RESEÑAS
+# -------------------------
+elif modo == "Ver todas las reseñas":
+    resenyas = list_all_resenyas()
+    for r in resenyas:
+        st.subheader(f"⭐ {r['valoracion']}")
+        st.write(r["texto_resenya"])
+        st.caption(f"ID reseña: {r['resenya_id']} - Tabla: {r['nombre_tabla']} - Item: {r['item_id']}")
+
+# -------------------------
 # AÑADIR RESEÑA
 # -------------------------
 elif modo == "Añadir reseña":
@@ -53,16 +63,6 @@ elif modo == "Añadir reseña":
     if st.button("Enviar reseña"):
         add_resenya(item_id, nombre_tabla, texto, valoracion)
         st.success("Reseña añadida correctamente.")
-
-# -------------------------
-# VER TODAS LAS RESEÑAS
-# -------------------------
-elif modo == "Ver todas las reseñas":
-    resenyas = list_all_resenyas()
-    for r in resenyas:
-        st.subheader(f"⭐ {r['valoracion']}")
-        st.write(r["texto_resenya"])
-        st.caption(f"ID reseña: {r['resenya_id']} - Tabla: {r['nombre_tabla']} - Item: {r['item_id']}")
 
 # -------------------------
 # BORRAR RESEÑA
