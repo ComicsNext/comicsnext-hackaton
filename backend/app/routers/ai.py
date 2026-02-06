@@ -18,9 +18,6 @@ from app.services.ai_service import recommend, summarize, analyze_review
 from app.utils.checkpoints import save_checkpoint
 
 
-# Estas funciones las creamos/ajustamos en app/services/db_ai_builders.py
-#from app.services.db_ai_builders import fetch_manga_candidates, fetch_history
-
 
 router = APIRouter(prefix="/ai", tags=["AI"])
 
@@ -47,11 +44,6 @@ async def ai_recommend(body: RecommendRequest,  db:Session = Depends(get_db)):
 
 # @router.post("/recommend_from_db", response_model=RecommendResponse)
 # async def ai_recommend_from_db(body: RecommendFromDbRequest):
-#     """
-#     ✅ Este es el endpoint clave:
-#     - NO pasas candidates
-#     - candidates + history salen de Azure SQL
-#     """
 #     try:
 #         t0 = time.time()
 
@@ -75,33 +67,35 @@ async def ai_recommend(body: RecommendRequest,  db:Session = Depends(get_db)):
 #         raise HTTPException(status_code=500, detail=f"DB recommend failed: {repr(e)}")
 
 
-@router.post("/summarize", response_model=SummarizeResponse)
-async def ai_summarize(body: SummarizeRequest):
-    t0 = time.time()
-    out = await summarize(body.title, body.synopsis, body.max_words)
-    dt_ms = int((time.time() - t0) * 1000)
-
-    payload = {
-        "endpoint": "/ai/summarize",
-        "latency_ms": dt_ms,
-        "input": body.model_dump(),
-        "output": out.model_dump(),
-    }
-    save_checkpoint("summarize", payload)
-    return out
 
 
-@router.post("/analyze_review", response_model=AnalyzeReviewResponse)
-async def ai_analyze_review(body: AnalyzeReviewRequest):
-    t0 = time.time()
-    out = await analyze_review(body.review_text)
-    dt_ms = int((time.time() - t0) * 1000)
+# @router.post("/summarize", response_model=SummarizeResponse)
+# async def ai_summarize(body: SummarizeRequest):
+#     t0 = time.time()
+#     out = await summarize(body.title, body.synopsis, body.max_words)
+#     dt_ms = int((time.time() - t0) * 1000)
 
-    payload = {
-        "endpoint": "/ai/analyze_review",
-        "latency_ms": dt_ms,
-        "input": {"review_text": body.review_text[:800], "title": body.title},
-        "output": out.model_dump(),
-    }
-    save_checkpoint("analyze_review", payload)
-    return out
+#     payload = {
+#         "endpoint": "/ai/summarize",
+#         "latency_ms": dt_ms,
+#         "input": body.model_dump(),
+#         "output": out.model_dump(),
+#     }
+#     save_checkpoint("summarize", payload)
+#     return out
+
+
+# @router.post("/analyze_review", response_model=AnalyzeReviewResponse)
+# async def ai_analyze_review(body: AnalyzeReviewRequest):
+#     t0 = time.time()
+#     out = await analyze_review(body.review_text)
+#     dt_ms = int((time.time() - t0) * 1000)
+
+#     payload = {
+#         "endpoint": "/ai/analyze_review",
+#         "latency_ms": dt_ms,
+#         "input": {"review_text": body.review_text[:800], "title": body.title},
+#         "output": out.model_dump(),
+#     }
+#     save_checkpoint("analyze_review", payload)
+#     return out

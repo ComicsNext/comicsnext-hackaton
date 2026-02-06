@@ -33,8 +33,7 @@ class RecommendFromDbRequest(BaseModel):
     user_profile: str = Field(..., description="Gustos del usuario (texto libre).")
     top_k: int = Field(5, ge=1, le=20)
 
-    # opcionales, por si tenÃ©is users/reviews:
-    user_id: Optional[int] = None          # si existe tabla users / reviews
+    user_id: Optional[int] = None        
     candidate_limit: int = Field(200, ge=10, le=2000)
 
 
@@ -69,6 +68,6 @@ class AnalyzeReviewRequest(BaseModel):
 
 
 class AnalyzeReviewResponse(BaseModel):
-    sentiment: str  # "positive" | "neutral" | "negative"
+    sentiment: str
     tags: List[str] = Field(default_factory=list)
     short_reason: str

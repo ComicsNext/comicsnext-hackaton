@@ -36,11 +36,10 @@ modo = st.selectbox(
 if modo == "Todos":
     comics = list_all_comics()
 
-    # separar
     mangas = [d for d in comics if "manga_id" in d]
     marvels = [c for c in comics if "marvel_id" in c]
 
-    # columnas principales (lado a lado)
+   
     col_manga, col_marvel = st.columns(2)
 
     # ---------------- MANGA (izquierda) ----------------
