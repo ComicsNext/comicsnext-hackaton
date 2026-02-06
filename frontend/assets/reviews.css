@@ -1,0 +1,54 @@
+/* ===============================
+   ComicsNext Title
+================================ */
+.cn-title {
+  font-size: 78px;
+  font-style: italic;
+  text-align: center;
+  font-weight: 900;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow:
+      3px 3px 0px rgba(0,0,0,0.95),
+      -3px 3px 0px rgba(0,0,0,0.95),
+      3px -3px 0px rgba(0,0,0,0.95),
+      -3px -3px 0px rgba(0,0,0,0.95),
+      0 0 22px rgba(0,0,0,0.6);
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.cn-comics {
+  color: #02afff;
+}
+
+.cn-next {
+  color: #ff2d2d;
+}
+
+
+/* ===============================
+   Review Cards
+================================ */
+.cn-card {
+  background: rgba(0,0,0,0.55);
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+}
+
+.cn-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.cn-card-text {
+  margin-bottom: 8px;
+}
+
+.cn-card small {
+  opacity: 0.85;
+}
